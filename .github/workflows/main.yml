@@ -1,0 +1,5 @@
+- name: Ping FastAPI
+  run: |
+    curl -X POST ${{ secrets.FASTAPI_URL }} \
+    -H "Content-Type: application/json" \
+    -d '{"event": "push", "user": "${{ github.actor }}"}'
