@@ -1,0 +1,19 @@
+name: Trigger n8n Pipeline
+on:
+  push:
+    branches:
+      - main  # This ensures it only runs when you push to the main branch
+
+jobs:
+  ping-fastapi:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Send POST request to FastAPI
+        run: |
+          curl -X POST "${{ secrets.FASTAPI_URL }}" \
+          -H "Content-Type: application/json" \
+          -d '{
+            "ref": "${{ github.ref }}",
+            "repository": "${{ github.repository }}",
+            "author": "${{ github.actor }}"
+          }'
