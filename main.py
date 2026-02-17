@@ -6,7 +6,7 @@ import os
 app = FastAPI()
 
 class GithubPayload(BaseModel):
-    head_commit: ditc = None
+    head_commit: dict = None
     pusher: dict = None
     repository: dict = None
 # Configuration (Use Environment Variables for security)
