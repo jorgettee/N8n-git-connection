@@ -1,9 +1,14 @@
 from fastapi import FastAPI, Request, Header, HTTPException
+from pydantic import BaseModel
 import httpx
 import os
 
 app = FastAPI()
 
+class GithubPayload(BaseModel):
+    head_commit: ditc = None
+    pusher: dict = None
+    repository: dict = None
 # Configuration (Use Environment Variables for security)
 N8N_WEBHOOK_URL = os.getenv("N8N_WEBHOOK_URL", "https://jorgette.tail3679cb.ts.net/webhook-test/github-trigger")
 SECRET_TOKEN = os.getenv("GITHUB_TO_FASTAPI_SECRET")
